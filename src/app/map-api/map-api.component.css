@@ -1,0 +1,65 @@
+.search{
+    background-image: url(../../assets/images/pattern-bg-desktop.png);
+    background-size: cover;
+    height: 26vh;
+    justify-content: center;
+}
+
+.form{
+    display: flex;
+    justify-content: flex-start;
+    width: 40vw;
+}
+.containerData{
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    border-radius: .5em;
+    justify-content: space-between;
+    width: 80vw;
+}
+.containerData>*{
+    width: calc(100%/4);
+    margin: 2em 0;
+    padding: 0 2em;
+    border-left: 1px solid grey;
+}
+.colorDarkGray{
+    color: hsl(0, 0%, 17%);
+}
+.containerData>*:first-child{
+    border-left: 0;
+}
+
+.input-special{
+    padding: 1em 1.5em;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.input-special:focus{
+    outline: none;
+}
+
+.btn-special{
+    padding: 1em 1.5em;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+#map { height: 74vh; }
+
+@media only screen and (max-width: 768px) {
+    .containerData{
+        flex-direction: column;
+        width: 90vw;
+    }
+    .form{
+        width: 90vw;
+    }
+    .containerData>*{
+        margin: 1em 0;
+        width: auto;
+    }
+    .input-special{
+        max-width: 72vw;
+    }
+  }

@@ -30,6 +30,7 @@
 }
 
 .input-special{
+    position: relative;
     padding: 1em 1.5em;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
@@ -43,6 +44,14 @@
     padding: 1em 1.5em;
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
+}
+
+.error{
+    outline: 1px solid red;
+}
+
+.error:focus{
+    outline: 1px solid red;
 }
 
 #map { height: 74vh; }

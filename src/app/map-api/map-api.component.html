@@ -1,28 +1,36 @@
 <div class="flex flex-col">
 <div class="search flex flex-col gap-4 items-center relative">
   <h1 class="text-white text-xl md:text-3xl -mt-12">IP Address Tracker</h1>
-  <form class="flex form"  action="#">
-    <input type="text" class="flex-grow input-special p-4" placeholder="Search for any IP address or domain" />
-    <button class="btn-special bg-black p-4"><img src="../../assets/images/icon-arrow.svg" alt=""></button>
+  <form class="flex form relative"  action="#">
+    <input type="text" class="flex-grow input-special p-4"  [formControl]="inputSearch" [ngClass]="{'error': !inputSearch.valid && inputSearch.value!.length>0}" placeholder="Search for any IP address or domain" />
+    <button class="btn-special bg-black p-4" (click)="searchMap(); false"><img src="../../assets/images/icon-arrow.svg" alt=""></button>
+    <div *ngIf="!inputSearch.valid && inputSearch.value!.length>0"  class="bg-white text-center  w-full absolute -bottom-6 p-1 rounded shadow-lg">
+      <p>Please enter a correct IP Address</p>
+    </div>
   </form>
   <div class="flex absolute top-3/4 z-10 bg-white containerData">
     <div>
       <p class="font-medium text-center md:text-left block colorDarkGray uppercase">IP Address</p>
-      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">192.212.174.101</p>
+      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">{{ipadress}}</p>
     </div>
     <div>
       <p class="font-medium text-center md:text-left block colorDarkGray uppercase">Location</p>
-      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">Brooklyn, NY 10001</p>
+      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">{{location}}</p>
     </div>
     <div>
       <p class="font-medium text-center md:text-left block colorDarkGray uppercase">Timezone</p>
-      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">UTC-05:00</p>
+      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">{{timezone}}</p>
     </div>
     <div>
       <p class="font-medium text-center md:text-left block colorDarkGray">ISP</p>
-      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">SpaceX Starlink</p>
+      <p class="font-bold text-center md:text-left md:break-words md:text-2xl">{{isp}}</p>
     </div>
   </div>
 </div>
-  <div id="map" class="grow relative z-0"></div>
+  <div id="map" class="grow relative z-0">
+    <div *ngIf="manyRequest" class="flex flex-col justify-center items-center h-full">
+      <p class="font-bold md:text-2xl">Error to many request (429)</p>
+      <p class="text-gray-500">Try later</p>
+    </div>
+  </div>
 </div>
